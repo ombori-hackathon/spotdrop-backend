@@ -8,7 +8,7 @@ def test_get_current_user(client, auth_headers, test_user):
 
 def test_get_current_user_unauthorized(client):
     response = client.get("/api/users/me")
-    assert response.status_code == 403
+    assert response.status_code == 401
 
 
 def test_update_current_user(client, auth_headers):
