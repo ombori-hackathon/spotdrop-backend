@@ -56,7 +56,7 @@ def test_create_spot_unauthorized(client):
             "longitude": 18.0686,
         },
     )
-    assert response.status_code == 403
+    assert response.status_code == 401
 
 
 def test_list_spots(client, test_spot):
@@ -135,7 +135,7 @@ def test_update_spot_unauthorized(client, test_spot):
         f"/api/spots/{test_spot.id}",
         json={"title": "Updated Cafe"},
     )
-    assert response.status_code == 403
+    assert response.status_code == 401
 
 
 def test_delete_spot(client, auth_headers, test_spot):
@@ -148,4 +148,4 @@ def test_delete_spot(client, auth_headers, test_spot):
 
 def test_delete_spot_unauthorized(client, test_spot):
     response = client.delete(f"/api/spots/{test_spot.id}")
-    assert response.status_code == 403
+    assert response.status_code == 401
